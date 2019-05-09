@@ -1,14 +1,16 @@
-class WeightedQuickUnion:
+class WeightedQuickUnionPC:
     def __init__(self, N):
         self.N = N
         self.parent = [i for i in range(N)]
         self.size = [1 for i in range(N)]
 
     def root(self, i):
-        while (i != self.parent[i]):
-            self.parent[i] = self.parent[self.parent[i]]
-            i = self.parent[i]
-        return i
+        if i == self.parent[i]:
+            return i
+
+        r = self.root(self.parent[i])
+        self.parent[i] = r
+        return r
 
     def connected(self, p, q):
         return self.root(p) == self.root(q)
@@ -20,7 +22,7 @@ class WeightedQuickUnion:
         if (i == j):
             return
 
-        if (self.size[i] < self.size[j]):
+        if (self.size[i] <= self.size[j]):
             self.parent[i] = j
             self.size[j] += self.size[i]
         else:
