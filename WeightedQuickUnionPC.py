@@ -2,7 +2,7 @@ class WeightedQuickUnionPC:
     def __init__(self, N):
         self.N = N
         self.parent = [i for i in range(N)]
-        self.size = [1 for i in range(N)]
+        self.rank = [0 for i in range(N)]
 
     def root(self, i):
         if i == self.parent[i]:
@@ -22,9 +22,10 @@ class WeightedQuickUnionPC:
         if (i == j):
             return
 
-        if (self.size[i] <= self.size[j]):
+        if (self.rank[i] < self.rank[j]):
             self.parent[i] = j
-            self.size[j] += self.size[i]
-        else:
+        elif (self.rank[i] > self.rank[j]):
             self.parent[j] = i
-            self.size[i] += self.size[j]
+        else:
+            self.parent[i] = j
+            self.rank[j] += 1
