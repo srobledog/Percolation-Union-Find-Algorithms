@@ -15,7 +15,7 @@ class Percolation:
 
 
     def getIndex(self, i, j):
-        return i * self.L + j
+        return j * self.L + i
 
 
     def isOpen(self, i, j):
@@ -30,10 +30,10 @@ class Percolation:
 
             self.sites[i, j] = True
 
-            if (i == 0):
+            if (j == 0):
                 self.uf.union(index, self.top)
 
-            if (i == (self.L - 1)):
+            if (j == (self.L - 1)):
                 self.uf.union(index, self.bottom)
 
             # left
@@ -51,6 +51,10 @@ class Percolation:
             # down
             if (i < (self.L - 1)) and self.isOpen(i + 1, j):
                 self.uf.union(index, self.getIndex(i + 1, j))
+
+
+    def connectedToTop(self, i, j):
+        return self.uf.connected(self.getIndex(i, j), self.top)
 
 
     def numberOfOpenSites(self):
