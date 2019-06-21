@@ -1,5 +1,5 @@
 from src.Percolation import Percolation
-from src.Plot import plot_lattice
+from src.Plot import plot_lattice_percolation
 import numpy
 
 def main():
@@ -18,7 +18,7 @@ def main():
 
     print(f"pc mean = {numpy.mean(values)}")
     print(f"pc std = {numpy.std(values)}")
-    plot_lattice(lattice)
+    plot_lattice_percolation(lattice)
 
 if __name__ == '__main__':
     main()
