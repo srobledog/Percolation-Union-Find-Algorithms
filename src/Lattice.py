@@ -8,7 +8,7 @@ class Lattice:
         self.sites = numpy.zeros((L, L), dtype=bool)
         self.opened = 0
 
-        self.uf = WeightedQuickUnion(L * L + 2)
+        self.uf = WeightedQuickUnion(L * L)
 
 
     def getIndex(self, i, j):
