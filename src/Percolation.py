@@ -23,34 +23,35 @@ class Percolation:
 
 
     def open(self, i, j):
-        if not self.sites[i, j]:
-            index = self.getIndex(i, j)
+        if self.sites[i, j]:
+            return
+        index = self.getIndex(i, j)
 
-            self.opened += 1
+        self.opened += 1
 
-            self.sites[i, j] = True
+        self.sites[i, j] = True
 
-            if (j == 0):
-                self.uf.union(index, self.top)
+        if (j == 0):
+            self.uf.union(index, self.top)
 
-            if (j == (self.L - 1)):
-                self.uf.union(index, self.bottom)
+        if (j == (self.L - 1)):
+            self.uf.union(index, self.bottom)
 
-            # left
-            if (j > 0) and self.isOpen(i, j - 1):
-                self.uf.union(index, self.getIndex(i, j - 1))
+        # left
+        if (j > 0) and self.isOpen(i, j - 1):
+            self.uf.union(index, self.getIndex(i, j - 1))
 
-            # right
-            if (j < (self.L - 1)) and self.isOpen(i, j + 1):
-                self.uf.union(index, self.getIndex(i, j + 1))
+        # right
+        if (j < (self.L - 1)) and self.isOpen(i, j + 1):
+            self.uf.union(index, self.getIndex(i, j + 1))
 
-            # up
-            if (i > 0) and self.isOpen(i - 1, j):
-                self.uf.union(index, self.getIndex(i - 1, j))
+        # up
+        if (i > 0) and self.isOpen(i - 1, j):
+            self.uf.union(index, self.getIndex(i - 1, j))
 
-            # down
-            if (i < (self.L - 1)) and self.isOpen(i + 1, j):
-                self.uf.union(index, self.getIndex(i + 1, j))
+        # down
+        if (i < (self.L - 1)) and self.isOpen(i + 1, j):
+            self.uf.union(index, self.getIndex(i + 1, j))
 
 
     def connectedToTop(self, i, j):

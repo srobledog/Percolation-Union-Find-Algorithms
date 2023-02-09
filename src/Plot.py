@@ -22,10 +22,23 @@ def plot_lattice_percolation(lattice,
         sq = Rectangle((x + 0.05, y + 0.05), 0.9, 0.9, facecolor=color, edgecolor="black", lw=2)
         if labels:
             if coordinates:
-                ax.text(x + 0.5, y + 0.5, str(lattice.getIndex(i, j)) + "\n" + str((i, j)), va="center", ha="center", fontsize=16)
+                ax.text(
+                    x + 0.5,
+                    y + 0.5,
+                    str(lattice.getIndex(x, j)) + "\n" + str((x, j)),
+                    va="center",
+                    ha="center",
+                    fontsize=16,
+                )
             else:
-                ax.text(x + 0.5, y + 0.5, lattice.getIndex(i, j), va="center", ha="center", fontsize=16)
-
+                ax.text(
+                    x + 0.5,
+                    y + 0.5,
+                    lattice.getIndex(x, j),
+                    va="center",
+                    ha="center",
+                    fontsize=16,
+                )
         ax.add_patch(sq)
 
     ax.set_xticks([])
@@ -59,10 +72,25 @@ def plot_lattice(lattice,
         y = lattice.L - j - 1
         sq = Rectangle((x + 0.05, y + 0.05), 0.9, 0.9, facecolor=color, edgecolor="black", lw=2)
         if coordinates:
-            ax.text(x + 0.5, y + 0.5, str(labels[i][j]) + "\n" + str((i, j)), va="center", ha="center", fontsize=16, weight="bold")
+            ax.text(
+                x + 0.5,
+                y + 0.5,
+                str(labels[x][j]) + "\n" + str((x, j)),
+                va="center",
+                ha="center",
+                fontsize=16,
+                weight="bold",
+            )
         else:
-            ax.text(x + 0.5, y + 0.5, labels[i][j], va="center", ha="center", fontsize=16, weight="bold")
-
+            ax.text(
+                x + 0.5,
+                y + 0.5,
+                labels[x][j],
+                va="center",
+                ha="center",
+                fontsize=16,
+                weight="bold",
+            )
         ax.add_patch(sq)
 
     ax.set_xticks([])
