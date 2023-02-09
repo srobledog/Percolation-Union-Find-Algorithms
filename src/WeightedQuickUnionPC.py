@@ -1,8 +1,8 @@
 class WeightedQuickUnionPC:
     def __init__(self, N):
         self.N = N
-        self.parent = [i for i in range(N)]
-        self.rank = [0 for i in range(N)]
+        self.parent = list(range(N))
+        self.rank = [0 for _ in range(N)]
 
     def root(self, i):
         if i == self.parent[i]:

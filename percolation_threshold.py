@@ -14,7 +14,7 @@ def main():
             j = numpy.random.randint(L)
             lattice.open(i, j)
 
-        values.append(lattice.numberOfOpenSites() / (L * L))
+        values.append(lattice.numberOfOpenSites() / L**2)
 
     print(f"pc mean = {numpy.mean(values)}")
     print(f"pc std = {numpy.std(values)}")

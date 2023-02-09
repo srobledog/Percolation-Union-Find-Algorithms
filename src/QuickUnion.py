@@ -1,7 +1,7 @@
 class QuickUnion:
     def __init__(self, N):
         self.N = N
-        self.parent = [i for i in range(N)]
+        self.parent = list(range(N))
 
     def root(self, i):
         while (i != self.parent[i]):
